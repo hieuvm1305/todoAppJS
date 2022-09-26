@@ -5,10 +5,10 @@ function ListTodo({ todos, removeTodo, updateTodo, searchRes }) {
   const renderList = (data) => {
     let res = data.map((todo, index) => (
       <tr key={index} >
-        <td className="text-center">{todo.title}</td>
-        <td className="text-center">{todo.time}</td>
-        <td className="text-center">{todo.status}</td>
-        <td className="text-center">
+        <td className="text-center p-1">{todo.title}</td>
+        <td className="text-center p-1">{todo.time}</td>
+        <td className="text-center p-1">{todo.status}</td>
+        <td className="text-center p-1">
           <button className="bg-purple-300 text-white font-bold py-2 px-4 rounded mr-1" onClick={()=>updateTodo(todo.id)}>
             Sửa
           </button>
@@ -25,10 +25,10 @@ function ListTodo({ todos, removeTodo, updateTodo, searchRes }) {
       <table className="w-full border rounded-lg">
         <thead>
           <tr>
-            <th>Title</th>
-            <th>Deadline</th>
-            <th>status</th>
-            <th>Actions</th>
+            <th className="p-1">Title</th>
+            <th className="p-1">Deadline</th>
+            <th className="p-1">Status</th>
+            <th className="p-1">Actions</th>
           </tr>
         </thead>
         <tbody>

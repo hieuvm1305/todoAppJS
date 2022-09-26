@@ -5,7 +5,7 @@ function TodoForm(props) {
   // const [input, setinput] = useState(props.edit ? props.edit : {});
   const [title, setTitle] = useState("");
   const [deadline, setDeadline] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("ToDo");
 
   const inputRef = useRef(null);
   useEffect(() => {
@@ -39,7 +39,7 @@ function TodoForm(props) {
     props.onSubmit(newTodo);
     setTitle("");
     setDeadline("");
-    setStatus("");
+    setStatus("ToDo");
   };
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -52,7 +52,7 @@ function TodoForm(props) {
     props.onUpdate(newUpdate);
     setTitle("");
     setDeadline("");
-    setStatus("");
+    setStatus("ToDo");
   };
   //update đã thành công việc bind dữ liệu lên để sửa, còn chức năng sửa
 
@@ -87,8 +87,7 @@ function TodoForm(props) {
                 onChange={changeStatus}
                 value={status}
               >
-                <option>--Status--</option>
-                <option>ToDo</option>
+                <option selected>ToDo</option>
                 <option>Inprocess</option>
                 <option>Done</option>
                 

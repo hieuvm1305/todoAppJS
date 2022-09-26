@@ -49,6 +49,7 @@ function SearchTodo(props) {
             required
             onChange={changeSearchTitle}
             value={searchTitle}
+            placeholder="Search Input"
           ></input>
         </div>
         <div className="col-span-1">

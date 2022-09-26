@@ -23,7 +23,7 @@ function Todo() {
   //Xoa todo
   const removeTodo = (id) => {
     const newTodos = todos.filter((item) => item.id !== id);
-    setTodos(newTodos)
+    setTodos(newTodos);
     localStorage.setItem("todo", JSON.stringify([...newTodos]));
   };
 
@@ -51,18 +51,16 @@ function Todo() {
   //Hiện còn phần search Todo, phần đổi màu
   //Search Item
   const itemSearch = (data) => {
-    let searchResult = [];
+    let searchResult;
     if (
       data.title !== "" &&
       data.timeStart === "" &&
       data.timeEnd === "" &&
       data.status === ""
     ) {
-      todos.forEach((item) => {
-        if (item.title === data.title) {
-          searchResult.push(item);
-        }
-      });
+      searchResult = todos.filter((item) =>
+        item.title.toLowerCase().includes(data.title.toLowerCase())
+      );
     } else if (
       data.title === "" &&
       data.timeStart !== "" &&
@@ -71,11 +69,11 @@ function Todo() {
     ) {
       let deadlineStart = new Date(data.timeStart);
       let deadlineEnd = new Date(data.timeEnd);
-      todos.forEach((item) => {
-        let date = new Date(item.time);
-        if (date > deadlineStart && date < deadlineEnd) {
-          searchResult.push(item);
-        }
+      searchResult = todos.filter((item) => {
+        return (
+          new Date(item.time) >= deadlineStart &&
+          new Date(item.time) <= deadlineEnd
+        );
       });
     } else if (
       data.title === "" &&
@@ -83,27 +81,20 @@ function Todo() {
       data.timeEnd === "" &&
       data.status !== ""
     ) {
-      todos.forEach((item) => {
-        if (item.status === data.status) {
-          searchResult.push(item);
-        }
-      });
+      searchResult = todos.filter((item) => item.status === data.status);
     } else {
       let deadlineStart = new Date(data.timeStart);
       let deadlineEnd = new Date(data.timeEnd);
-      todos.forEach((item) => {
-        let date = new Date(item.time)
-        if (item.title === data.title &&
-          date > deadlineStart &&
-          date < deadlineEnd &&
+      searchResult = todos.filter((item) => {
+        return (
+          item.title.toLowerCase().includes(data.title.toLowerCase()) &&
+          new Date(item.time) > deadlineStart &&
+          new Date(item.time) < deadlineEnd &&
           item.status === data.status
-          ) {
-          searchResult.push(item);
-        }
+        );
       });
     }
     setsearchRes(searchResult);
-    console.log(searchResult)
   };
   //bỏ không search nữa
   const handleCancel = (data) => {
@@ -116,6 +107,12 @@ function Todo() {
       <h3 className="text-2xl text-center mb-5 font-bold">Simple Todo App</h3>
       <TodoForm onSubmit={addTodo} edit={editItem} onUpdate={handleUpdate} />
       <br />
+      <SearchTodo
+        todo={todos}
+        searchItem={itemSearch}
+        handleCancel={handleCancel}
+      />
+      <br />
       <ListTodo
         todos={todos}
         removeTodo={removeTodo}
@@ -123,11 +120,6 @@ function Todo() {
         searchRes={searchRes}
       />
       <br />
-      <SearchTodo
-        todo={todos}
-        searchItem={itemSearch}
-        handleCancel={handleCancel}
-      />
     </div>
   );
 }
