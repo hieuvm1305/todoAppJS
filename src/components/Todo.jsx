@@ -23,8 +23,8 @@ function Todo() {
   //Xoa todo
   const removeTodo = (id) => {
     const newTodos = todos.filter((item) => item.id !== id);
-    setTodos(newTodos);
-    localStorage.setItem("todo", JSON.stringify(todos));
+    setTodos(newTodos)
+    localStorage.setItem("todo", JSON.stringify([...newTodos]));
   };
 
   //lay item can update và setstate
@@ -112,7 +112,7 @@ function Todo() {
     }
   };
   return (
-    <div className="max-w-3xl mx-auto mt-7 border border-black rounded">
+    <div className="max-w-4xl mx-auto mt-7 border border-black rounded">
       <h3 className="text-2xl text-center mb-5 font-bold">Simple Todo App</h3>
       <TodoForm onSubmit={addTodo} edit={editItem} onUpdate={handleUpdate} />
       <br />

@@ -39,13 +39,13 @@ function SearchTodo(props) {
     props.handleCancel(true);
   };
   return (
-    <div>
-      <div className="grid grid-cols-5 gap-4">
+    <div className="px-2">
+      <div className="grid grid-cols-5 gap-4 mb-2">
         <div className="col-span-2">
           <label>Search input</label>
           <input
             type="text"
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             required
             onChange={changeSearchTitle}
             value={searchTitle}
@@ -55,7 +55,7 @@ function SearchTodo(props) {
         <label>Time start</label>
           <input
             type="date"
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={changeTimeStart}
             value={timeStart}
           ></input>
@@ -64,7 +64,7 @@ function SearchTodo(props) {
           <label htmlFor="">Time End</label>
           <input
             type="date"
-            className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow border rounded w-full h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={changeTimeEnd}
             value={timeEnd}
           ></input>
@@ -72,7 +72,7 @@ function SearchTodo(props) {
         <div className="col-span-1">
           <label>Status</label>
           <select
-            className="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow  border rounded w-full h-10 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             onChange={changeSearchStatus}
             value={statusSearch}
           >
@@ -83,7 +83,7 @@ function SearchTodo(props) {
           </select>
         </div>
       </div>
-      <div>
+      <div className="mb-1">
         <button
           className="bg-orange-300 hover:bg-amber-100 text-white font-bold py-2 px-4 rounded mr-1"
           onClick={searchHandle}

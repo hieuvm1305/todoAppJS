@@ -6,7 +6,7 @@ function TodoForm(props) {
   const [title, setTitle] = useState("");
   const [deadline, setDeadline] = useState("");
   const [status, setStatus] = useState("");
-  
+
   const inputRef = useRef(null);
   useEffect(() => {
     inputRef.current?.focus();
@@ -48,52 +48,54 @@ function TodoForm(props) {
       title: title,
       time: deadline,
       status: status,
-    }
+    };
     props.onUpdate(newUpdate);
     setTitle("");
     setDeadline("");
     setStatus("");
-  }
+  };
   //update đã thành công việc bind dữ liệu lên để sửa, còn chức năng sửa
 
   return (
     <div>
       <div>
-        {props.edit ? (
-          <div>
-            <div className="grid grid-cols-4 gap-4">
-              <div className="col-span-2 ">
-                <input
-                  className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="username"
-                  type="text"
-                  placeholder="Input Todo"
-                  ref={inputRef}
-                  onChange={changeTitle}
-                  value={title}
-                />
-              </div>
-              <div className="col-span-1">
-                <input
-                  type="date"
-                  className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  onChange={changeDeadline}
-                  value={deadline}
-                />
-              </div>
-              <div className="col-span-1">
-                <select
-                  className="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  onChange={changeStatus}
-                  value={status}
-                >
-                  <option>--Status--</option>
-                  <option>ToDo</option>
-                  <option>Done</option>
-                  <option>Inprocess</option>
-                </select>
-              </div>
+        <div className="px-2">
+          <div className="grid grid-cols-4 gap-4">
+            <div className="col-span-2 ">
+              <input
+                class="shadow border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="username"
+                type="text"
+                placeholder="Input Todo"
+                ref={inputRef}
+                onChange={changeTitle}
+                value={title}
+                required="required"
+              />
             </div>
+            <div className="col-span-1">
+              <input
+                type="date"
+                class="shadow border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                onChange={changeDeadline}
+                value={deadline}
+              />
+            </div>
+            <div className="col-span-1">
+              <select
+                className="shadow  border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                onChange={changeStatus}
+                value={status}
+              >
+                <option>--Status--</option>
+                <option>ToDo</option>
+                <option>Inprocess</option>
+                <option>Done</option>
+                
+              </select>
+            </div>
+          </div>
+          {props.edit ? (
             <div>
               <button
                 className="bg-sky-500 hover:bg-sky-700 rounded leading-tight py-2 px-3 mt-2 text-white font-bold"
@@ -102,42 +104,7 @@ function TodoForm(props) {
                 Update
               </button>
             </div>
-          </div>
-        ) : (
-          <div>
-            <div className="grid grid-cols-4 gap-4">
-              <div className="col-span-2 ">
-                <input
-                  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="username"
-                  type="text"
-                  placeholder="Input Todo"
-                  ref={inputRef}
-                  onChange={changeTitle}
-                  value={title}
-                />
-              </div>
-              <div className="col-span-1">
-                <input
-                  type="date"
-                  class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  onChange={changeDeadline}
-                  value={deadline}
-                />
-              </div>
-              <div className="col-span-1">
-                <select
-                  className="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  onChange={changeStatus}
-                  value={status}
-                >
-                  <option>--Status--</option>
-                  <option>ToDo</option>
-                  <option>Done</option>
-                  <option>Inprocess</option>
-                </select>
-              </div>
-            </div>
+          ) : (
             <div>
               <button
                 className="bg-sky-500 hover:bg-sky-700 rounded leading-tight py-2 px-3 mt-2 text-white font-bold"
@@ -146,8 +113,8 @@ function TodoForm(props) {
                 Add ToDo
               </button>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
