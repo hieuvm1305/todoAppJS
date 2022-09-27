@@ -19,6 +19,7 @@ function Todo() {
         todo.status = "ToDo";
       }
       setTodos([todo, ...todos]);
+      setsearchRes(null)
       localStorage.setItem("todo", JSON.stringify([todo, ...todos]));
     }
   };
@@ -50,9 +51,8 @@ function Todo() {
     });
     setTodos(updateArr);
     localStorage.setItem("todo", JSON.stringify(todos));
-    seteditItem(null);
+    seteditItem(null);// add khi đang search
   };
-
   //Search Item
   const itemSearch = (data) => {
     let searchResult = [...todos];
@@ -96,12 +96,17 @@ function Todo() {
       setsearchRes(null);
     }
   };
+
   return (
     <div className="max-w-4xl mx-auto mt-7 border border-black rounded-2xl p-4 bg-slate-400">
       <h3 className="text-2xl text-center mb-5 font-bold text-white">
         Simple Todo App
       </h3>
-      <TodoForm onSubmit={addTodo} edit={editItem} onUpdate={handleUpdate} />
+      <TodoForm
+        onSubmit={addTodo}
+        edit={editItem}
+        onUpdate={handleUpdate}
+      />
       <br />
       <SearchTodo
         todo={todos}
