@@ -80,7 +80,7 @@ function SearchTodo(props) {
             <option>--Status--</option>
             <option>ToDo</option>
             <option>Done</option>
-            <option>Inprocess</option>
+            <option>In Process</option>
           </select>
         </div>
       </div>

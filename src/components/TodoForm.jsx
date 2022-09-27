@@ -29,6 +29,8 @@ function TodoForm(props) {
   const changeStatus = (e) => {
     setStatus(e.target.value);
   };
+
+  //submit add todo
   const handleSubmit = (e) => {
     e.preventDefault();
     let newTodo = {
@@ -42,6 +44,7 @@ function TodoForm(props) {
     setDeadline("");
     setStatus("");
   };
+  //update
   const handleUpdate = (e) => {
     e.preventDefault();
     let newUpdate = {
@@ -88,8 +91,8 @@ function TodoForm(props) {
                 onChange={changeStatus}
                 value={status}
               >
-                <option value={status}>ToDo</option>
-                <option>Inprocess</option>
+                <option>ToDo</option>
+                <option>In Process</option>
                 <option>Done</option>
               </select>
             </div>

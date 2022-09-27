@@ -4,7 +4,7 @@ function ListTodo({ todos, removeTodo, updateTodo, searchRes }) {
   //set màu cho từng todo
   const backgroundColor = (time, status) => {
     const today = new Date().getTime();
-    if (status === "Inprocess") {
+    if (status === "In Process") {
       if (new Date(time).getTime() > today) {
         return "bg-orange-400";
       } else return "bg-red-500";
