@@ -19,7 +19,7 @@ function Todo() {
         todo.status = "ToDo";
       }
       setTodos([todo, ...todos]);
-      setsearchRes(null)
+      setsearchRes(null)// xóa searchList khi add.
       localStorage.setItem("todo", JSON.stringify([todo, ...todos]));
     }
   };
@@ -53,6 +53,11 @@ function Todo() {
     localStorage.setItem("todo", JSON.stringify(todos));
     seteditItem(null);// add khi đang search
   };
+
+  //Chức năng hủy update.....
+  const cancelUpdate = () => {
+    seteditItem(null);
+  }
   //Search Item
   const itemSearch = (data) => {
     let searchResult = [...todos];
@@ -106,6 +111,7 @@ function Todo() {
         onSubmit={addTodo}
         edit={editItem}
         onUpdate={handleUpdate}
+        cancelUpdate={cancelUpdate}
       />
       <br />
       <SearchTodo

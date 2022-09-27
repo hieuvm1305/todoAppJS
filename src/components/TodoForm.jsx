@@ -5,7 +5,7 @@ function TodoForm(props) {
   // const [input, setinput] = useState(props.edit ? props.edit : {});
   const [title, setTitle] = useState("");
   const [deadline, setDeadline] = useState("");
-  const [status, setStatus] = useState("ToDo");
+  const [status, setStatus] = useState("");
 
   const inputRef = useRef(null);
   useEffect(() => {
@@ -58,7 +58,14 @@ function TodoForm(props) {
     setDeadline("");
     setStatus("");
   };
-  //update đã thành công việc bind dữ liệu lên để sửa, còn chức năng sửa
+  //cancelupdate
+  const exitUpdate = () => {
+    props.cancelUpdate();
+    setTitle("");
+    setDeadline("");
+    setStatus("");
+  }
+
   return (
     <div>
       <div>
@@ -99,10 +106,16 @@ function TodoForm(props) {
           {props.edit ? (
             <div>
               <button
-                className="bg-sky-500 hover:bg-sky-700 rounded leading-tight py-2 px-3 mt-2 text-white font-bold"
+                className="bg-sky-500 hover:bg-sky-700 rounded leading-tight py-2 px-3 mt-2 mr-1 text-white font-bold"
                 onClick={handleUpdate}
               >
                 Update
+              </button>
+              <button
+                className="bg-sky-500 hover:bg-sky-700 rounded leading-tight py-2 px-3 mt-2 ml-1 text-white font-bold"
+                onClick={exitUpdate}
+              >
+                Cancel
               </button>
             </div>
           ) : (
