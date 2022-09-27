@@ -10,13 +10,13 @@ function SearchTodo(props) {
   };
   const changeTimeStart = (e) => {
     settimeStart(e.target.value);
-  }
+  };
   const changeTimeEnd = (e) => {
     settimeEnd(e.target.value);
-  }
+  };
   const changeSearchStatus = (e) => {
     setstatusSearch(e.target.value);
-  }
+  };
   const searchHandle = () => {
     let itemSearch = {
       title: searchTitle,
@@ -53,7 +53,7 @@ function SearchTodo(props) {
           ></input>
         </div>
         <div className="col-span-1">
-        <label>Time start</label>
+          <label>Time start</label>
           <input
             type="date"
             className="shadow border rounded w-full h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -86,13 +86,13 @@ function SearchTodo(props) {
       </div>
       <div className="mb-1">
         <button
-          className="bg-orange-300 hover:bg-amber-100 text-white font-bold py-2 px-4 rounded mr-1"
+          className="bg-orange-300 hover:bg-amber-100 text-blue-500 font-bold py-2 px-4 rounded mr-1"
           onClick={searchHandle}
         >
           Search
         </button>
         <button
-          className="bg-slate-400 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded"
+          className="bg-violet-400 hover:bg-slate-600 text-white font-bold py-2 px-4 rounded"
           onClick={handleCancel}
         >
           Cancel
