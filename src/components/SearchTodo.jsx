@@ -5,6 +5,7 @@ function SearchTodo(props) {
   const [timeStart, settimeStart] = useState("");
   const [timeEnd, settimeEnd] = useState("");
   const [statusSearch, setstatusSearch] = useState("");
+
   const changeSearchTitle = (e) => {
     setsearchTitle(e.target.value);
   };
@@ -40,7 +41,7 @@ function SearchTodo(props) {
   };
   return (
     <div className="px-2">
-      <div className="grid grid-cols-5 gap-4 mb-2">
+      <div className="grid grid-cols-5 gap-4 mb-2 form-todo">
         <div className="col-span-2">
           <label>Search input</label>
           <input

@@ -64,7 +64,7 @@ function TodoForm(props) {
     <div>
       <div>
         <div className="px-2">
-          <div className="grid grid-cols-4 gap-4">
+          <div className="grid grid-cols-4 gap-4 form-todo">
             <div className="col-span-2 ">
               <input
                 class="shadow border rounded w-full h-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

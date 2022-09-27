@@ -26,9 +26,10 @@ function Todo() {
   //Xoa todo
   const removeTodo = (id) => {
     const newTodos = todos.filter((item) => item.id !== id);
-    setTodos(newTodos);
     localStorage.setItem("todo", JSON.stringify([...newTodos]));
+    setTodos(newTodos);
   };
+  //Còn 1 chức năng là xóa todo khi search thì vẫn xóa nhưng searchList ko render lại
 
   //lay item can update và setstate
   const updateTodo = (id) => {
